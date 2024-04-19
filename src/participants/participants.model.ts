@@ -1,5 +1,6 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { BelongsToMany, Column, DataType, Model, Table } from "sequelize-typescript";
 import { ApiProperty } from "@nestjs/swagger";
+import { NumberDto } from "src/numbers/numbers.model";
 interface ParticipantCreationAttrs {
   phone: string
 }
@@ -14,6 +15,8 @@ export class Participant extends Model<Participant, ParticipantCreationAttrs> {
   phone: string
 
   @ApiProperty({ example: '123', description: 'Номер' })
+  @BelongsToMany(() => Participant, () => NumberDto)
   @Column({ type: DataType.ARRAY, unique: true, allowNull: false })
-  numbers: string
+  numbers: NumberDto[]
+
 }

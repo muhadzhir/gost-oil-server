@@ -29,7 +29,6 @@ export class ParticipantsService {
     return participant
   }
   async getParicipiantByPhone(phone: string): Promise<Participant> {
-    console.log(phone)
     const participant = await this.participantRepository.findOne({ where: { phone } })
     return participant
   }
