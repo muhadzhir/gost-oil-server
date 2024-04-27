@@ -10,6 +10,6 @@ export class NumberDto extends Model<NumberDto, NumberCreationAttrs> {
   id: number;
 
   @ApiProperty({ example: '7 912 345 67 89', description: 'Телефон' })
-  @Column({ type: DataType.STRING, unique: true, allowNull: false })
+  @Column({ type: DataType.STRING, allowNull: false })
   phone: string
 }

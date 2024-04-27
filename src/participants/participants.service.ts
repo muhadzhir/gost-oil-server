@@ -6,22 +6,21 @@ import { AddParticipantsNumbersDto } from "./dto/add-participant-numbers.dto"
 import { NumberDto } from 'src/numbers/numbers.model';
 @Injectable()
 export class ParticipantsService {
-  constructor(@InjectModel(InjectModel) private participantRepository: typeof Participant,
-    @InjectModel(InjectModel) private numbersRepository: typeof NumberDto) { }
+  constructor(@InjectModel(Participant) private participantRepository: typeof Participant,
+    @InjectModel(NumberDto) private numbersRepository: typeof NumberDto) { }
 
   async addNumbers(dto: AddParticipantsNumbersDto) {
     let participant = await this.getParicipiantByPhone(dto.phone) || await this.createParticipant(dto)
-    const numbers = this.addNumbersByPhone(participant.phone, dto.summ)
+    const numbers = this.addNumbersByPhone(participant.phone, dto.sum)
     return numbers
   }
-  async addNumbersByPhone(phone: string, summ: number) {
-    const participant = await this.numbersRepository.findOne({ where: { phone } })
-    const numbersCount = Math.ceil(summ / 1000)
-    const numbers = []
+  async addNumbersByPhone(phone: string, sum: number) {
+    const numbersCount = Math.ceil(sum / 1000)
+    const createNumbers = []
     for (let i = 0; i < numbersCount; i++) {
-      const number = await this.numbersRepository.create(participant.phone)
-      numbers.push(number)
+      createNumbers.push({ phone })
     }
+    const numbers = await this.numbersRepository.bulkCreate(createNumbers)
     return numbers
   }
   async createParticipant(dto: CreateParticipantDto) {

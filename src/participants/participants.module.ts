@@ -6,14 +6,17 @@ import { Participant } from "./participants.model";
 import { NumbersController } from 'src/numbers/numbers.controller';
 import { NumbersService } from 'src/numbers/numbers.service';
 import { NumberDto } from 'src/numbers/numbers.model';
+import { AuthModule } from "../auth/auth.module";
 
 @Module({
   controllers: [ParticipantsController, NumbersController],
   providers: [ParticipantsService, NumbersService],
   imports: [
     SequelizeModule.forFeature([Participant]),
-    SequelizeModule.forFeature([NumberDto])
+    SequelizeModule.forFeature([NumberDto]),
+    AuthModule
   ],
+  exports: [ParticipantsService]
 })
 
 export class ParticipantsModule { }

@@ -4,7 +4,7 @@ import { InjectModel } from "@nestjs/sequelize";
 import { CreateNumbersDto } from './dto/create-numbers.dto'
 @Injectable()
 export class NumbersService {
-  constructor(@InjectModel(InjectModel) private numbersRepository: typeof NumberDto) {
+  constructor(@InjectModel(NumberDto) private numbersRepository: typeof NumberDto) {
 
   }
   async addNumbersByPhone(dto: CreateNumbersDto) {
@@ -12,4 +12,3 @@ export class NumbersService {
     return numbers
   }
 }
-

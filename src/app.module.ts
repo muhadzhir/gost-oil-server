@@ -7,6 +7,12 @@ import { User } from "./users/users.model";
 import { ParticipantsModule } from './participants/participants.module';
 import { Participant } from "./participants/participants.model";
 import { NumbersModule } from './numbers/numbers.module';
+import { RolesModule } from './roles/roles.module';
+import { UserRoles } from './roles/user-roles.model';
+import { Role } from './roles/roles.model';
+import { AuthModule } from './auth/auth.module';
+import { WebsocketGateway } from './websockets/websockets.service';
+import { TicketsModule } from './tickets/tickets.module';
 @Module({
   controllers: [],
   imports: [
@@ -20,11 +26,16 @@ import { NumbersModule } from './numbers/numbers.module';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [User, Participant],
+      models: [User, Participant, Role, UserRoles],
+      autoLoadModels: true
     }),
     UsersModule,
     ParticipantsModule,
-    NumbersModule
+    NumbersModule,
+    RolesModule,
+    AuthModule,
+    WebsocketGateway,
+    TicketsModule
   ]
 })
 export class AppModule { }

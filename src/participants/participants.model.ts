@@ -13,10 +13,4 @@ export class Participant extends Model<Participant, ParticipantCreationAttrs> {
   @ApiProperty({ example: '7 912 345 67 89', description: 'Телефон' })
   @Column({ type: DataType.STRING, unique: true, allowNull: false })
   phone: string
-
-  @ApiProperty({ example: '123', description: 'Номер' })
-  @BelongsToMany(() => Participant, () => NumberDto)
-  @Column({ type: DataType.ARRAY, unique: true, allowNull: false })
-  numbers: NumberDto[]
-
 }

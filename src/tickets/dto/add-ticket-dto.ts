@@ -1,15 +1,11 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { UserRole } from "../users.model";
-type OilStation = 'ZARECHNY'
-export class CreateUserDto {
+import { OilStation } from "../../types";
+export class AddTicketsDto {
   @ApiProperty({ example: 'Ivan', description: 'Имя пользователя в системе' })
-  readonly name: string
+  readonly phone: string
 
   @ApiProperty({ example: '123456', description: 'Пароль' })
-  readonly password: string
-
-  @ApiProperty({ example: 'ADMIN', description: 'Роль'})
-  readonly  role: UserRole
+  readonly sum: number
 
   @ApiProperty({ example: 'ZARECHNY', description: 'Заправка'})
   readonly  oilStation: OilStation
