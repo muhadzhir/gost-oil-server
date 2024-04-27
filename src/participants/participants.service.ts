@@ -15,7 +15,7 @@ export class ParticipantsService {
     return numbers
   }
   async addNumbersByPhone(phone: string, sum: number) {
-    const numbersCount = Math.ceil(sum / 1000)
+    const numbersCount = Math.floor(sum / 1000)
     const createNumbers = []
     for (let i = 0; i < numbersCount; i++) {
       createNumbers.push({ phone })

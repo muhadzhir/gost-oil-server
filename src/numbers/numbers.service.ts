@@ -11,4 +11,9 @@ export class NumbersService {
     const numbers = this.numbersRepository.create(dto)
     return numbers
   }
+
+  async getNumbersByPhone({ phone }: CreateNumbersDto) {
+    const numbers = this.numbersRepository.findAll({ where: { phone }})
+    return numbers
+  }
 }
