@@ -10,7 +10,7 @@ async function start() {
 
   // Включаем CORS для HTTP запросов
   app.enableCors({
-    origin: '*',
+    origin: process.env.HOST,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
