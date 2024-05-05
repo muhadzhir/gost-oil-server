@@ -5,7 +5,7 @@ export class AddTicketsDto {
   readonly phone: string
 
   @ApiProperty({ example: '123456', description: 'Пароль' })
-  readonly sum: number
+  readonly numbersCount: number
 
   @ApiProperty({ example: 'ZARECHNY', description: 'Заправка'})
   readonly  oilStation: OilStation

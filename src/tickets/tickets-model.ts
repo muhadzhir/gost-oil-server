@@ -4,7 +4,7 @@ import { OilStation } from "../types";
 
 interface CreationAttrs {
   phone: string,
-  sum: number
+  numbersCount: number
   oilStation: OilStation
 }
 @Table({ tableName: 'tickets' })
@@ -19,7 +19,7 @@ export class Ticket extends Model<Ticket, CreationAttrs> {
 
   @ApiProperty({ example: '1000', description: 'Сумма' })
   @Column({ type: DataType.INTEGER, allowNull: false })
-  sum: number
+  numbersCount: number
 
   @ApiProperty({ example: 'ZARECHNY', description: 'Заправка' })
   @Column({ type: DataType.STRING,  allowNull: false })

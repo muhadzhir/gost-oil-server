@@ -11,11 +11,10 @@ export class ParticipantsService {
 
   async addNumbers(dto: AddParticipantsNumbersDto) {
     let participant = await this.getParicipiantByPhone(dto.phone) || await this.createParticipant(dto)
-    const numbers = this.addNumbersByPhone(participant.phone, dto.sum)
+    const numbers = this.addNumbersByPhone(participant.phone, dto.numbersCount)
     return numbers
   }
-  async addNumbersByPhone(phone: string, sum: number) {
-    const numbersCount = Math.floor(sum / 1000)
+  async addNumbersByPhone(phone: string, numbersCount: number) {
     const createNumbers = []
     for (let i = 0; i < numbersCount; i++) {
       createNumbers.push({ phone })
