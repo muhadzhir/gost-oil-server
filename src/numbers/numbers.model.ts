@@ -1,5 +1,6 @@
 import { Column, DataType, Model, Table } from "sequelize-typescript";
 import { ApiProperty } from "@nestjs/swagger";
+import { OilStation } from "../types";
 interface NumberCreationAttrs {
   phone: string
 }
@@ -12,4 +13,8 @@ export class NumberDto extends Model<NumberDto, NumberCreationAttrs> {
   @ApiProperty({ example: '7 912 345 67 89', description: 'Телефон' })
   @Column({ type: DataType.STRING, allowNull: false })
   phone: string
+
+  @ApiProperty({ example: 'ZARECHNY', description: 'Заправка' })
+  @Column({ type: DataType.STRING, allowNull: false })
+  oilStation: OilStation
 }

@@ -10,14 +10,13 @@ export class ParticipantsService {
     @InjectModel(NumberDto) private numbersRepository: typeof NumberDto) { }
 
   async addNumbers(dto: AddParticipantsNumbersDto) {
-    let participant = await this.getParicipiantByPhone(dto.phone) || await this.createParticipant(dto)
-    const numbers = this.addNumbersByPhone(participant.phone, dto.numbersCount)
-    return numbers
-  }
-  async addNumbersByPhone(phone: string, numbersCount: number) {
+    let participant = await this.getParicipiantByPhone(dto.phone)
+    if (!participant) {
+      await this.createParticipant(dto)
+    }
     const createNumbers = []
-    for (let i = 0; i < numbersCount; i++) {
-      createNumbers.push({ phone })
+    for (let i = 0; i < dto.numbersCount; i++) {
+      createNumbers.push({ phone: dto.phone, oilStation: dto.oilStation })
     }
     const numbers = await this.numbersRepository.bulkCreate(createNumbers)
     return numbers

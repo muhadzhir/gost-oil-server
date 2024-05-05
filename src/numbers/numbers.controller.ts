@@ -1,10 +1,9 @@
 
 import { Body, Controller, Post, Get } from "@nestjs/common";
 import { NumbersService } from "./numbers.service";
-import { CreateNumbersDto } from "./dto/create-numbers.dto";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { NumberDto } from "./numbers.model";
-import { GetNumbersDto } from "./dto/get-numbers.dto";
+import { NumbersDto } from "./dto/numbers.dto";
 @Controller('numbers')
 export class NumbersController {
   constructor(private numberssService: NumbersService) { }
@@ -15,12 +14,16 @@ export class NumbersController {
     status: 200, type: NumberDto
   })
   @Post()
-  create(@Body() dto: CreateNumbersDto) {
-    return this.numberssService.addNumbersByPhone(dto)
+  create(@Body() dto: NumbersDto) {
+    return this.numberssService.addNumbers(dto)
   }
 
   @Post('/get-numbers')
-  getNumbers(@Body() dto: GetNumbersDto) {
+  getNumbersByPhone(@Body() dto: NumbersDto) {
     return this.numberssService.getNumbersByPhone(dto)
+  }
+  @Get('/get-all-numbers')
+  getAllNumbers() {
+    return this.numberssService.getAllNumbers()
   }
 }
