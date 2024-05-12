@@ -1,6 +1,7 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import {  Column, DataType, Model, Table } from "sequelize-typescript";
 import { ApiProperty } from "@nestjs/swagger";
 import { OilStation } from "../types";
+import { AutoIncrement } from "sequelize-typescript/dist/model/column/primary-key/auto-increment";
 interface NumberCreationAttrs {
   phone: string
 }

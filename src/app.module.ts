@@ -13,6 +13,7 @@ import { Role } from './roles/roles.model';
 import { AuthModule } from './auth/auth.module';
 import { WebsocketGateway } from './websockets/websockets.service';
 import { TicketsModule } from './tickets/tickets.module';
+import { ExcelModule } from './excel/excel.module';
 @Module({
   controllers: [],
   imports: [
@@ -35,7 +36,8 @@ import { TicketsModule } from './tickets/tickets.module';
     RolesModule,
     AuthModule,
     WebsocketGateway,
-    TicketsModule
+    TicketsModule,
+    ExcelModule
   ]
 })
 export class AppModule {}

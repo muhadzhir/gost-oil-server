@@ -1,1 +1,1 @@
-export type OilStation = 'ZARECHNYI' | 'GUTYAKULOVA' | 'OBYEZDNAYA'
+export type OilStation = 'ZARECHNY' | 'GUTYAKULOVA' | 'SHOSEINAYA'

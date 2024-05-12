@@ -9,6 +9,9 @@ import { NumberDto } from 'src/numbers/numbers.model';
   providers: [NumbersService],
   imports: [
     SequelizeModule.forFeature([NumberDto])
+  ],
+  exports: [
+    NumbersService
   ]
 })
 export class NumbersModule { }

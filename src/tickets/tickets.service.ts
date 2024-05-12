@@ -1,9 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
-import { GetTicketsDto } from "./dto/get-tickets.dto";
 import { InjectModel } from "@nestjs/sequelize";
 import { Ticket } from "./tickets-model";
 import { AddTicketsDto } from "./dto/add-ticket-dto";
-import { Participant } from "../participants/participants.model";
 import { ParticipantsService } from "../participants/participants.service";
 import { OilStation } from "../types";
 
