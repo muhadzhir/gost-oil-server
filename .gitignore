@@ -1,6 +1,5 @@
 # compiled output
 /dist
-/src/files
 /node_modules
 /build
 
