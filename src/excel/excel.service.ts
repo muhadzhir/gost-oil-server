@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common'
 
 import * as ExcelJS from 'exceljs'
 import { NumbersService } from "../numbers/numbers.service";
-import { getOilRusName } from "../utils";
 
 @Injectable()
 export class ExcelService {
@@ -30,7 +29,6 @@ export class ExcelService {
     worksheet.getColumn(2).width = 20
     const filePath = 'src/files/data.xlsx'
     await workbook.xlsx.writeFile(filePath)
-
     return filePath
   }
 }

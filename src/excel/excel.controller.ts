@@ -9,6 +9,6 @@ export class ExcelController {
   @Get('/all-data')
   async downloadAllNumbers(@Res() res: Response): Promise<void> {
     await this.excelService.downloadAllNumbers();
-    res.download('data.xlsx', 'data.xlsx');
+    res.download('src/files/data.xlsx', 'data.xlsx');
   }
 }
